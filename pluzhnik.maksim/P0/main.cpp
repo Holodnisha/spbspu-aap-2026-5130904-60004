@@ -1,10 +1,6 @@
 #include <iostream>
-namespace pluzhnik
+
+int main()
 {
-void my_name() { std::cout << "pluzhnik.maksim/n"; }
-} // namespace pluzhnik
-int main() 
-{
-  pluzhnik::my_name();
-  return 0;
+  std::cout << "pluzhnik.maksim/n";
 }
