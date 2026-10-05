@@ -2,5 +2,5 @@
 
 int main()
 {
-  std::cout << 'pluzhnik.maksim\n';
+  std::cout << "pluzhnik.maksim\n";
 }
