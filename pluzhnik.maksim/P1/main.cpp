@@ -1,7 +1,6 @@
 #include <iostream>
 #include <climits>
 #include <stdexcept>
-#include <exception>
 
 namespace pluzhnik
 {
