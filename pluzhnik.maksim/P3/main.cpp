@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 
   int rows = 0;
   int cols = 0;
-  if (!(std::cin >> rows >> cols) || rows <= 0 || cols <= 0)
+  if (!(std::cin >> rows >> cols) || rows < 0 || cols < 0)
   {
     std::cerr << "Error: size" << std::endl;
     return 2;
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
   }
   else
   {
-    int * const dynamic_buffer = new (std::nothrow) int[total_elements];
+    int *const dynamic_buffer = new (std::nothrow) int[total_elements];
     if (dynamic_buffer == nullptr)
     {
       std::cerr << "Error: memory" << std::endl;
