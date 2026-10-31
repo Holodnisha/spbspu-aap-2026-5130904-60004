@@ -11,7 +11,7 @@ namespace pluzhnik
 int main()
 {
   std::size_t length = 0;
-  const char * const input_str = pluzhnik::readLine(std::cin, &length);
+  const char* const input_str = pluzhnik::readLine(std::cin, &length);
   if (input_str == nullptr)
   {
     std::cerr << "Error: memory" << std::endl;
@@ -98,7 +98,7 @@ namespace pluzhnik
 
     buffer[size] = '\0';
 
-    if (ch == '\n')
+    if (ch != '\n' && size == 0)
     {
       delete[] buffer;
       return nullptr;
