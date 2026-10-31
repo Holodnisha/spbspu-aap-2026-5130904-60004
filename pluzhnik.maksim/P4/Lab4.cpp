@@ -11,7 +11,7 @@ namespace pluzhnik
 int main()
 {
   std::size_t length = 0;
-  const char* input_str = pluzhnik::readLine(std::cin, &length);
+  const char * const input_str = pluzhnik::readLine(std::cin, &length);
   if (input_str == nullptr)
   {
     std::cerr << "Error: memory" << std::endl;
