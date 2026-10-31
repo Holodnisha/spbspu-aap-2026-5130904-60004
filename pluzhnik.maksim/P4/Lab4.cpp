@@ -98,7 +98,7 @@ namespace pluzhnik
 
     buffer[size] = '\0';
 
-    if (size == 0 && (in.eof() || in.fail()))
+    if (ch == '\n')
     {
       delete[] buffer;
       return nullptr;
