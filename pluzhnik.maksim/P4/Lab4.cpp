@@ -11,7 +11,7 @@ namespace pluzhnik
 int main()
 {
   std::size_t length = 0;
-  char* input_str = pluzhnik::readLine(std::cin, &length);
+  const char* input_str = pluzhnik::readLine(std::cin, &length);
   if (input_str == nullptr)
   {
     std::cerr << "Error: memory" << std::endl;
@@ -57,7 +57,8 @@ namespace pluzhnik
 
   char* readLine(std::istream& in, std::size_t* out_size)
   {
-    std::size_t capacity = 16;
+    const std::size_t INITIAL_CAPACITY = 16;
+    std::size_t capacity = INITIAL_CAPACITY;
     std::size_t size = 0;
 
     char* buffer = new (std::nothrow) char[capacity];
@@ -96,6 +97,12 @@ namespace pluzhnik
     }
 
     buffer[size] = '\0';
+
+    if (size == 0 && (in.eof() || in.fail()))
+    {
+      delete[] buffer;
+      return nullptr;
+    }
 
     char* const exact_buffer = new (std::nothrow) char[size + 1];
     if (exact_buffer != nullptr)
