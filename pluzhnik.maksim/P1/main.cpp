@@ -4,61 +4,90 @@
 
 namespace pluzhnik
 {
-  int getMaxLen()
+  struct MaxCounterLen
   {
-    int val = 0;
-    int temp_val = 0;
-    int len_pos = 0;
-    int max_len_pos = 0;
-    while (true)
+  public:
+    MaxCounterLen():
+      max_len_pos_(0),
+      len_pos_(0),
+      temp_val_(0),
+      is_first_(true)
+    {}
+    void operator()(int val)
     {
-      if (!(std::cin >> val))
-      {
-        throw std::invalid_argument("Error: invalid input format");
-      }
       if (val == 0)
       {
-        if (len_pos > max_len_pos)
+        if (len_pos_ > max_len_pos_)
         {
-          max_len_pos = len_pos;
+          max_len_pos_ = len_pos_;
         }
-        break;
+        return;
       }
-      if (val >= temp_val)
+      if (is_first_)
       {
-        if (len_pos < (INT_MAX - 1))
+        len_pos_ = 1;
+        is_first_ = false;
+      }
+      else if (val >= temp_val_)
+      {
+        if (len_pos_ < INT_MAX)
         {
-          ++len_pos;
+          ++len_pos_;
         }
         else
         {
-          throw std::invalid_argument("Error: overflow len_pos");
+          throw std::overflow_error("Error: overflow len_pos");
         }
-      }
-      else if (len_pos > max_len_pos)
-      {
-        max_len_pos = len_pos;
-        len_pos = 1;
       }
       else
       {
-        len_pos = 1;
+        if (len_pos_ > max_len_pos_)
+        {
+          max_len_pos_ = len_pos_;
+        }
+        len_pos_ = 1;
       }
-      temp_val = val;
+
+      temp_val_ = val;
     }
-    return max_len_pos;
-  }
+
+    int operator()() const
+    {
+      return max_len_pos_;
+    }
+  private:
+    int max_len_pos_;
+    int len_pos_;
+    int temp_val_;
+    bool is_first_;
+  };
 }
 
 int main()
 {
   try
   {
-    const int max_len_pos = pluzhnik::getMaxLen();
-    std::cout << max_len_pos << "\n";
+    pluzhnik::MaxCounterLen counter;
+    int val = 0;
+
+    while (true)
+    {
+      if (!(std::cin >> val))
+      {
+        throw std::invalid_argument("Error: invalid input format");
+      }
+
+      counter(val);
+
+      if (val == 0)
+      {
+        break;
+      }
+    }
+    std::cout << counter() << "\n";
     return 0;
   }
-  catch (const std::invalid_argument &e)
+  catch (const std::exception &e)
   {
     std::cerr << e.what() << "\n";
     return 1;
