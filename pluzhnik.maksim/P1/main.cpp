@@ -4,16 +4,15 @@
 
 namespace pluzhnik
 {
-  struct MaxCounter
+  struct MaxCounterLen
   {
   public:
-    MaxCounter() :
+    MaxCounterLen():
       max_len_pos_(0),
       len_pos_(0),
       temp_val_(0),
       is_first_(true)
     {}
-
     void operator()(int val)
     {
       if (val == 0)
@@ -24,7 +23,6 @@ namespace pluzhnik
         }
         return;
       }
-
       if (is_first_)
       {
         len_pos_ = 1;
@@ -57,7 +55,6 @@ namespace pluzhnik
     {
       return max_len_pos_;
     }
-
   private:
     int max_len_pos_;
     int len_pos_;
@@ -70,7 +67,7 @@ int main()
 {
   try
   {
-    pluzhnik::MaxCounter counter;
+    pluzhnik::MaxCounterLen counter;
     int val = 0;
 
     while (true)
@@ -87,7 +84,6 @@ int main()
         break;
       }
     }
-
     std::cout << counter() << "\n";
     return 0;
   }
