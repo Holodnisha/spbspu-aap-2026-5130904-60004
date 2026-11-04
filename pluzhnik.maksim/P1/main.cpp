@@ -4,7 +4,7 @@
 
 namespace pluzhnik
 {
-  struct MaxIncreasingSequenceCounter
+  struct MaxCounter
   {
   public:
     MaxCounter() :
