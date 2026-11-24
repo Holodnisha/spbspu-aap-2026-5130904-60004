@@ -5,7 +5,7 @@
 
 namespace pluzhnik
 {
-  class Ring : public Shape
+  class Ring: public Shape
   {
   public:
     Ring(double outer_r, double inner_r, const point_t& pos);

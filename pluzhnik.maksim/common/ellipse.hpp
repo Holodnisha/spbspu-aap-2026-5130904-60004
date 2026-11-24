@@ -5,7 +5,7 @@
 
 namespace pluzhnik
 {
-  class Ellipse : public Shape
+  class Ellipse: public Shape
   {
   public:
     Ellipse(double rx, double ry, const point_t& pos);

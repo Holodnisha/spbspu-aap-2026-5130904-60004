@@ -1,10 +1,10 @@
 #include <iostream>
 #include <iomanip>
 #include <stdexcept>
-#include <ellipse.hpp>
-#include <rectangle.hpp>
-#include <ring.hpp>
-#include <shape-utils.hpp>
+#include "../common/ellipse.hpp"
+#include "../common/rectangle.hpp"
+#include "../common/ring.hpp"
+#include "../common/shape-utils.hpp"
 
 namespace pluzhnik
 {
