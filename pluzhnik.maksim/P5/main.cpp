@@ -40,7 +40,7 @@ int main()
   try
   {
     shapes[0] = new pluzhnik::Rectangle(4.0, 2.0, {1.0, 3.0});
-    shapes[1] = new pluzhnik::Rectangle({6.0, 4.0, {-2.0, -1.0}});
+    shapes[1] = new pluzhnik::Rectangle(pluzhnik::rectangle_t{6.0, 4.0, {-2.0, -1.0}});
     shapes[2] = new pluzhnik::Ellipse(3.0, 2.0, {0.0, 4.0});
     shapes[3] = new pluzhnik::Ring(5.0, 2.0, {-3.0, 2.0});
 
