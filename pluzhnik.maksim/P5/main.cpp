@@ -14,14 +14,13 @@ namespace pluzhnik
     for (std::size_t i = 0; i < count; ++i)
     {
       const rectangle_t frame = shapes[i]->getFrameRect();
-      out << "Shape #" << (i + 1) << ": area = " << shapes[i]->getArea()
-          << ", frame = [w: " << frame.width << ", h: " << frame.height
-          << ", pos: (" << frame.pos.x << ", " << frame.pos.y << ")]\n";
+      out << "Shape #" << (i + 1) << ": area = " << shapes[i]->getArea() << ", frame = [w: " << frame.width
+          << ", h: " << frame.height << ", pos: (" << frame.pos.x << ", " << frame.pos.y << ")]\n";
     }
     const rectangle_t total_frame = getTotalFrameRect(shapes, count);
     out << "Total area = " << getTotalArea(shapes, count) << "\n"
-        << "Total frame = [w: " << total_frame.width << ", h: " << total_frame.height
-        << ", pos: (" << total_frame.pos.x << ", " << total_frame.pos.y << ")]\n";
+        << "Total frame = [w: " << total_frame.width << ", h: " << total_frame.height << ", pos: (" << total_frame.pos.x
+        << ", " << total_frame.pos.y << ")]\n";
   }
 
   void deleteShapes(Shape** shapes, std::size_t count) noexcept
