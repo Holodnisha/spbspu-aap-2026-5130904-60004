@@ -2,56 +2,43 @@
 
 #define SHAPE_HPP
 
-
-
-#include <base-types.hpp>
-
-
+#include "base-types.hpp"
 
 namespace pluzhnik
 
 {
 
-  class Shape
+class Shape
 
-  {
+{
 
-  public:
+public:
+  virtual ~Shape() = default;
 
-    virtual ~Shape() = default;
+  virtual double getArea() const = 0;
 
+  virtual rectangle_t getFrameRect() const = 0;
 
+  virtual void move(const point_t &pos) = 0;
 
-    virtual double getArea() const = 0;
+  virtual void move(double dx, double dy) = 0;
 
-    virtual rectangle_t getFrameRect() const = 0;
+  virtual void scale(double factor) = 0;
 
-    virtual void move(const point_t& pos) = 0;
+  virtual Shape *clone() const = 0;
 
-    virtual void move(double dx, double dy) = 0;
+protected:
+  Shape() = default;
 
-    virtual void scale(double factor) = 0;
+  Shape(const Shape &) = default;
 
-    virtual Shape* clone() const = 0;
+  Shape(Shape &&) noexcept = default;
 
+  Shape &operator=(const Shape &) = default;
 
+  Shape &operator=(Shape &&) noexcept = default;
+};
 
-  protected:
-
-    Shape() = default;
-
-    Shape(const Shape&) = default;
-
-    Shape(Shape&&) noexcept = default;
-
-    Shape& operator=(const Shape&) = default;
-
-    Shape& operator=(Shape&&) noexcept = default;
-
-  };
-
-}
-
-
+} // namespace pluzhnik
 
 #endif

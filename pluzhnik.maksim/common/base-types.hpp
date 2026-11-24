@@ -2,38 +2,30 @@
 
 #define BASE_TYPES_HPP
 
-
-
 namespace pluzhnik
 
 {
 
-  struct point_t
+struct point_t
 
-  {
+{
 
-    double x;
+  double x;
 
-    double y;
+  double y;
+};
 
-  };
+struct rectangle_t
 
+{
 
+  double width;
 
-  struct rectangle_t
+  double height;
 
-  {
+  point_t pos;
+};
 
-    double width;
-
-    double height;
-
-    point_t pos;
-
-  };
-
-}
-
-
+} // namespace pluzhnik
 
 #endif

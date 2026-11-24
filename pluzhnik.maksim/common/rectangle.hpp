@@ -2,50 +2,37 @@
 
 #define RECTANGLE_HPP
 
-
-
-#include <shape.hpp>
-
-
+#include "shape.hpp"
 
 namespace pluzhnik
 
 {
 
-  class Rectangle : public Shape
+class Rectangle : public Shape
 
-  {
+{
 
-  public:
+public:
+  Rectangle(double width, double height, const point_t &pos);
 
-    Rectangle(double width, double height, const point_t& pos);
+  Rectangle(const rectangle_t &rect);
 
-    Rectangle(const rectangle_t& rect);
+  double getArea() const override;
 
+  rectangle_t getFrameRect() const override;
 
+  void move(const point_t &pos) override;
 
-    double getArea() const override;
+  void move(double dx, double dy) override;
 
-    rectangle_t getFrameRect() const override;
+  void scale(double factor) override;
 
-    void move(const point_t& pos) override;
+  Shape *clone() const override;
 
-    void move(double dx, double dy) override;
+private:
+  rectangle_t rect_;
+};
 
-    void scale(double factor) override;
-
-    Shape* clone() const override;
-
-
-
-  private:
-
-    rectangle_t rect_;
-
-  };
-
-}
-
-
+} // namespace pluzhnik
 
 #endif

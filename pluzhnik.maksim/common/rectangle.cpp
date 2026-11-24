@@ -1,10 +1,11 @@
-#include <rectangle.hpp>
+#include "rectangle.hpp"
 
 #include <stdexcept>
 
-pluzhnik::Rectangle::Rectangle(double width, double height, const point_t& pos):
+pluzhnik::Rectangle::Rectangle(double width, double height, const point_t &pos)
+    :
 
-  rect_{width, height, pos}
+      rect_{width, height, pos}
 
 {
   if (width <= 0.0 || height <= 0.0)
@@ -14,9 +15,10 @@ pluzhnik::Rectangle::Rectangle(double width, double height, const point_t& pos):
   }
 }
 
-pluzhnik::Rectangle::Rectangle(const rectangle_t& rect):
+pluzhnik::Rectangle::Rectangle(const rectangle_t &rect)
+    :
 
-  Rectangle(rect.width, rect.height, rect.pos)
+      Rectangle(rect.width, rect.height, rect.pos)
 
 {}
 
@@ -32,7 +34,7 @@ pluzhnik::rectangle_t pluzhnik::Rectangle::getFrameRect() const
   return rect_;
 }
 
-void pluzhnik::Rectangle::move(const point_t& pos)
+void pluzhnik::Rectangle::move(const point_t &pos)
 
 {
   rect_.pos = pos;
@@ -60,7 +62,7 @@ void pluzhnik::Rectangle::scale(double factor)
   rect_.height *= factor;
 }
 
-pluzhnik::Shape* pluzhnik::Rectangle::clone() const
+pluzhnik::Shape *pluzhnik::Rectangle::clone() const
 
 {
   return new Rectangle(*this);

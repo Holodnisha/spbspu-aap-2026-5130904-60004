@@ -2,52 +2,39 @@
 
 #define ELLIPSE_HPP
 
-
-
-#include <shape.hpp>
-
-
+#include "shape.hpp"
 
 namespace pluzhnik
 
 {
 
-  class Ellipse : public Shape
+class Ellipse : public Shape
 
-  {
+{
 
-  public:
+public:
+  Ellipse(double rx, double ry, const point_t &pos);
 
-    Ellipse(double rx, double ry, const point_t& pos);
+  double getArea() const override;
 
+  rectangle_t getFrameRect() const override;
 
+  void move(const point_t &pos) override;
 
-    double getArea() const override;
+  void move(double dx, double dy) override;
 
-    rectangle_t getFrameRect() const override;
+  void scale(double factor) override;
 
-    void move(const point_t& pos) override;
+  Shape *clone() const override;
 
-    void move(double dx, double dy) override;
+private:
+  double rx_;
 
-    void scale(double factor) override;
+  double ry_;
 
-    Shape* clone() const override;
+  point_t pos_;
+};
 
-
-
-  private:
-
-    double rx_;
-
-    double ry_;
-
-    point_t pos_;
-
-  };
-
-}
-
-
+} // namespace pluzhnik
 
 #endif

@@ -1,10 +1,11 @@
-#include <shape-utils.hpp>
+#include "shape-utils.hpp"
 
 #include <algorithm>
 
 #include <stdexcept>
 
-void pluzhnik::scaleFromPoint(Shape& shape, const point_t& center, double factor)
+void pluzhnik::scaleFromPoint(Shape &shape, const point_t &center,
+                              double factor)
 
 {
   if (factor <= 0.0)
@@ -26,7 +27,7 @@ void pluzhnik::scaleFromPoint(Shape& shape, const point_t& center, double factor
   shape.move(dx * factor, dy * factor);
 }
 
-double pluzhnik::getTotalArea(const Shape* const* shapes, std::size_t count)
+double pluzhnik::getTotalArea(const Shape *const *shapes, std::size_t count)
 
 {
   double total = 0.0;
@@ -44,7 +45,8 @@ double pluzhnik::getTotalArea(const Shape* const* shapes, std::size_t count)
   return total;
 }
 
-pluzhnik::rectangle_t pluzhnik::getTotalFrameRect(const Shape* const* shapes, std::size_t count)
+pluzhnik::rectangle_t pluzhnik::getTotalFrameRect(const Shape *const *shapes,
+                                                  std::size_t count)
 
 {
   if (count == 0)

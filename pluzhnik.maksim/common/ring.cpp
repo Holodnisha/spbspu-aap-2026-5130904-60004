@@ -1,4 +1,4 @@
-#include <ring.hpp>
+#include "ring.hpp"
 
 #include <stdexcept>
 
@@ -6,17 +6,18 @@ namespace
 
 {
 
-  constexpr double PI = 3.14159265358979323846;
+constexpr double PI = 3.1415926;
 
 }
 
-pluzhnik::Ring::Ring(double outer_r, double inner_r, const point_t& pos):
+pluzhnik::Ring::Ring(double outer_r, double inner_r, const point_t &pos)
+    :
 
-  outer_r_(outer_r),
+      outer_r_(outer_r),
 
-  inner_r_(inner_r),
+      inner_r_(inner_r),
 
-  pos_(pos)
+      pos_(pos)
 
 {
   if (outer_r_ <= 0.0 || inner_r_ <= 0.0)
@@ -28,7 +29,8 @@ pluzhnik::Ring::Ring(double outer_r, double inner_r, const point_t& pos):
   if (inner_r_ >= outer_r_)
 
   {
-    throw std::invalid_argument("Inner radius must be strictly less than outer radius");
+    throw std::invalid_argument(
+        "Inner radius must be strictly less than outer radius");
   }
 }
 
@@ -46,7 +48,7 @@ pluzhnik::rectangle_t pluzhnik::Ring::getFrameRect() const
   return {diameter, diameter, pos_};
 }
 
-void pluzhnik::Ring::move(const point_t& pos)
+void pluzhnik::Ring::move(const point_t &pos)
 
 {
   pos_ = pos;
@@ -74,7 +76,7 @@ void pluzhnik::Ring::scale(double factor)
   inner_r_ *= factor;
 }
 
-pluzhnik::Shape* pluzhnik::Ring::clone() const
+pluzhnik::Shape *pluzhnik::Ring::clone() const
 
 {
   return new Ring(*this);

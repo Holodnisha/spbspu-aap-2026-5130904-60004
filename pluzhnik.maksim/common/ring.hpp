@@ -2,52 +2,39 @@
 
 #define RING_HPP
 
-
-
-#include <shape.hpp>
-
-
+#include "shape.hpp"
 
 namespace pluzhnik
 
 {
 
-  class Ring : public Shape
+class Ring : public Shape
 
-  {
+{
 
-  public:
+public:
+  Ring(double outer_r, double inner_r, const point_t &pos);
 
-    Ring(double outer_r, double inner_r, const point_t& pos);
+  double getArea() const override;
 
+  rectangle_t getFrameRect() const override;
 
+  void move(const point_t &pos) override;
 
-    double getArea() const override;
+  void move(double dx, double dy) override;
 
-    rectangle_t getFrameRect() const override;
+  void scale(double factor) override;
 
-    void move(const point_t& pos) override;
+  Shape *clone() const override;
 
-    void move(double dx, double dy) override;
+private:
+  double outer_r_;
 
-    void scale(double factor) override;
+  double inner_r_;
 
-    Shape* clone() const override;
+  point_t pos_;
+};
 
-
-
-  private:
-
-    double outer_r_;
-
-    double inner_r_;
-
-    point_t pos_;
-
-  };
-
-}
-
-
+} // namespace pluzhnik
 
 #endif

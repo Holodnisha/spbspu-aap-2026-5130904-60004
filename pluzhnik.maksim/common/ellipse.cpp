@@ -1,4 +1,4 @@
-#include <ellipse.hpp>
+#include "ellipse.hpp"
 
 #include <stdexcept>
 
@@ -6,17 +6,18 @@ namespace
 
 {
 
-  constexpr double PI = 3.14159265358979323846;
+constexpr double PI = 3.14159265358979323846;
 
 }
 
-pluzhnik::Ellipse::Ellipse(double rx, double ry, const point_t& pos):
+pluzhnik::Ellipse::Ellipse(double rx, double ry, const point_t &pos)
+    :
 
-  rx_(rx),
+      rx_(rx),
 
-  ry_(ry),
+      ry_(ry),
 
-  pos_(pos)
+      pos_(pos)
 
 {
   if (rx_ <= 0.0 || ry_ <= 0.0)
@@ -38,7 +39,7 @@ pluzhnik::rectangle_t pluzhnik::Ellipse::getFrameRect() const
   return {2.0 * rx_, 2.0 * ry_, pos_};
 }
 
-void pluzhnik::Ellipse::move(const point_t& pos)
+void pluzhnik::Ellipse::move(const point_t &pos)
 
 {
   pos_ = pos;
@@ -66,8 +67,9 @@ void pluzhnik::Ellipse::scale(double factor)
   ry_ *= factor;
 }
 
-pluzhnik::Shape* pluzhnik::Ellipse::clone() const
+pluzhnik::Shape *pluzhnik::Ellipse::clone() const
 
 {
   return new Ellipse(*this);
-}
+
+  et
